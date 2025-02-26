@@ -6,10 +6,9 @@ public enum LeadStatus {
     RESERVATION(2),
     FINANCIAL_APPROVED(3),
     LEGAL_FINALIZED(4),
-    SALE(5),
-    COMPLETED(6);
+    SALE(5);
 
-    private final int value;
+    public final int value;
 
     LeadStatus(int value) {
         this.value = value;
