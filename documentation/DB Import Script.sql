@@ -149,9 +149,7 @@ CREATE TABLE `sale` (
   `commission_details` varchar(255) DEFAULT NULL,
   `final_sale_price` decimal(38,2) DEFAULT NULL,
   `sale_date` datetime(6) DEFAULT NULL,
-  `agent_id` int(11) DEFAULT NULL,
-  `lead_id` int(11) DEFAULT NULL,
-  `property_id` int(11) DEFAULT NULL
+  `property_reservation_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -190,8 +188,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `password`, `role`, `username`) VALUES
-(1, 'Admin', 'admin', 'admin', 'admin'),
-(2, 'Sales Agent', 'sales', 'sales', 'sales');
+(1, 'Admin', '$2a$12$M03yLLNrGZe4GHimM4fjeeBicwRNsDZYCEbPHhgiRwLc9q5XIaEQq', 'admin', 'admin'),
+(2, 'Sales Agent', '$2a$12$M03yLLNrGZe4GHimM4fjeeBicwRNsDZYCEbPHhgiRwLc9q5XIaEQq', 'sales', 'sales');
 
 --
 -- Indexes for dumped tables
@@ -227,8 +225,7 @@ ALTER TABLE `property_reservation`
 --
 ALTER TABLE `sale`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FKgvah8hs1frx0s0wxqjr2vw74u` (`agent_id`),
-  ADD KEY `FK14hoeonm4nkkdblg49r52wi2n` (`lead_id`);
+  ADD KEY `FKgvah8hs1frx0s0wxqjr2vw74u` (`property_reservation_id`);
 
 --
 -- Indexes for table `user`
@@ -257,9 +254,7 @@ ALTER TABLE `property_reservation`
 -- Constraints for table `sale`
 --
 ALTER TABLE `sale`
-  ADD CONSTRAINT `FK14hoeonm4nkkdblg49r52wi2n` FOREIGN KEY (`lead_id`) REFERENCES `lead` (`id`),
-  ADD CONSTRAINT `FK828liflqefl8ny5gstfca9s7m` FOREIGN KEY (`property_id`) REFERENCES `property` (`id`),
-  ADD CONSTRAINT `FKgvah8hs1frx0s0wxqjr2vw74u` FOREIGN KEY (`agent_id`) REFERENCES `agent` (`id`);
+  ADD CONSTRAINT `FK14hoeonm4nkkdblg49r52wi2n` FOREIGN KEY (`property_reservation_id`) REFERENCES `property_reservation` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
