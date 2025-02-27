@@ -6,7 +6,7 @@ public enum ErrorCode {
     PROPERTY_NOT_FOUND("LCRM003", "Property not found"),
     RESERVATION_NOT_FOUND("LCRM004", "Reservation not found"),
     SALE_NOT_FOUND("LCRM005", "Sale not found"),
-    INELIGIBLE_LEAD_STATUS("LCRM003", "Ineligible lead status");
+    INELIGIBLE_LEAD_STATUS("LCRM006", "Ineligible lead status");
 
     public final String errorCode;
     public final String errorDescription;

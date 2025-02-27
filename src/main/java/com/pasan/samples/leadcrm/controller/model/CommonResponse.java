@@ -30,4 +30,8 @@ public record CommonResponse<T>(
     public static CommonResponse failResponse(String statusCode, String statusDescription) {
         return new CommonResponse(statusCode, statusDescription, null);
     }
+
+    public static <T> CommonResponse failResponse(String statusCode, String statusDescription, T data) {
+        return new CommonResponse(statusCode, statusDescription, data);
+    }
 }

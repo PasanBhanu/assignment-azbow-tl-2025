@@ -108,6 +108,8 @@ public class LeadService {
             throw new LogicViolationException(ErrorCode.INELIGIBLE_LEAD_STATUS);
         }
 
+
+
         lead.setStatus(LeadStatus.RESERVATION);
         leadRepository.save(lead);
 
