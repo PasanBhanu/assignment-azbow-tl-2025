@@ -12,7 +12,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class LeadService {
@@ -31,6 +31,23 @@ public class LeadService {
         this.propertyRepository = propertyRepository;
         this.propertyReservationRepository = propertyReservationRepository;
         this.saleRepository = saleRepository;
+    }
+
+    public ResponseEntity<CommonResponse<LeadsResponse>> getLeads(Date startDate, Date endDate, Integer status, Integer agent) {
+        List<Lead> leads = leadRepository.findAll();
+
+        LeadsResponse response = new LeadsResponse(leads.stream().map(this::convertToLeadResponse).toList());
+
+        return CommonResponse.successResponse(response);
+    }
+
+    public ResponseEntity<CommonResponse<LeadResponse>> getLead(Integer id) {
+        Optional<Lead> optLead = leadRepository.findById(id);
+        if (optLead.isEmpty()) {
+            throw new DatabaseValidationException(ErrorCode.LEAD_NOT_FOUND);
+        }
+
+        return CommonResponse.successResponse(this.convertToLeadResponse(optLead.get()));
     }
 
     public ResponseEntity<CommonResponse> createLead(CreateLeadRequest request) {
@@ -220,14 +237,36 @@ public class LeadService {
         leadRepository.save(lead);
 
         Sale sale = new Sale();
-        sale.setLead(lead);
-        sale.setAgent(lead.getAgent());
-        sale.setProperty(propertyReservation.getProperty());
+        sale.setPropertyReservation(propertyReservation);
         sale.setSaleDate(request.saleDate());
         sale.setFinalSalePrice(request.finalSalePrice());
         sale.setCommissionDetails(request.commissionDetails());
         saleRepository.save(sale);
 
         return CommonResponse.successResponse();
+    }
+
+    private LeadResponse convertToLeadResponse(Lead lead) {
+        // Get Agent
+        AgentResponse agent = null;
+        if (lead.getAgent() != null) {
+            agent = AgentResponse.of(lead.getAgent());
+        }
+
+        // Get Reservation
+        PropertyReservationResponse propertyReservation = null;
+        Optional<PropertyReservation> optPropertyReservation = propertyReservationRepository.findByLead_Id(lead.getId());
+        if (optPropertyReservation.isPresent()) {
+            // Check Sale
+            SaleResponse sale = null;
+            Optional<Sale> optSale = saleRepository.findByPropertyReservation_Id(optPropertyReservation.get().getId());
+            if (optSale.isPresent()) {
+                sale = SaleResponse.of(optSale.get());
+            }
+
+            propertyReservation = PropertyReservationResponse.of(optPropertyReservation.get(), sale);
+        }
+
+        return LeadResponse.of(lead, agent, propertyReservation);
     }
 }

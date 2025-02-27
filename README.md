@@ -51,7 +51,9 @@ mvn spring-boot:run
 
 ## How to Test
 
+Once the application is started, you can use [Swagger UI](http://localhost:8080/swagger-ui/index.html) or [Postman Collection](documentation/AZBOW%20Lead%20CRM.postman_collection.json) to test the endpoints.
 
+Sample data is available in postman for testing.
 
 ## System Design
 
@@ -59,6 +61,4 @@ The system design documents are located in [documentation](documentation) folder
 
 ER Diagram: [View ER Diagram](documentation/README.md#er-diagram)
 
-Data Flow Diagram: 
-
-Process Flow Diagram: 
+Process Flow Diagram: [View ER Diagram](documentation/README.md#state-diagram)

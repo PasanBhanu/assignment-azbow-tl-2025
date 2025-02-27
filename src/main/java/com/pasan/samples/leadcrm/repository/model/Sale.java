@@ -16,16 +16,8 @@ public class Sale {
     private Integer id;
 
     @OneToOne
-    @JoinColumn(name = "property_id")
-    private Property property;
-
-    @ManyToOne
-    @JoinColumn(name = "agent_id")
-    private Agent agent;
-
-    @ManyToOne
-    @JoinColumn(name = "lead_id")
-    private Lead lead;
+    @JoinColumn(name = "property_reservation_id")
+    private PropertyReservation propertyReservation;
 
     private Date saleDate;
 

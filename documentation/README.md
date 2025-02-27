@@ -45,9 +45,7 @@ erDiagram
     }
     SALE {
         int id PK
-        int agent_id FK
-        int lead_id FK
-        int sale_id FK
+        int property_reservation_id FK
         date sale_date
         decimal final_sale_price
         string commission_details
@@ -80,8 +78,6 @@ erDiagram
     }
     LEAD |o--o{ AGENT : has
     PROPERTY_RESERVATION ||--o{ PROPERTY : has
-    PROPERTY_RESERVATION ||--o{ LEAD : has
-    SALE ||--o| PROPERTY : has
-    SALE ||--|| LEAD : pay
-    SALE ||--|{ AGENT : do
+    PROPERTY_RESERVATION ||--o| LEAD : has
+    PROPERTY_RESERVATION ||--o| SALE : do
 ```
