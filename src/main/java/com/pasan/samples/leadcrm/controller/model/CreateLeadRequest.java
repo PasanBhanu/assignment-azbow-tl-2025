@@ -12,7 +12,6 @@ public record CreateLeadRequest (
         String contact,
         @NotBlank(message = "source is required")
         String source,
-        @NotBlank(message = "inquiry date is required")
         @PastOrPresent(message = "inquiry date cannot be in the future")
         Date inquiryDate
 ) {

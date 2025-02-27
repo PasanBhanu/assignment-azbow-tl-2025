@@ -3,7 +3,8 @@ package com.pasan.samples.leadcrm.controller.model;
 import java.math.BigDecimal;
 
 public record CreateReservationFinancialApprovalRequest(
-        String financialStatus,
+        Integer reservationId,
+        Boolean financialStatus,
         BigDecimal loanAmount,
         String paymentPlan
 ) {

@@ -6,7 +6,8 @@ public enum LeadStatus {
     RESERVATION(2),
     FINANCIAL_APPROVED(3),
     LEGAL_FINALIZED(4),
-    SALE(5);
+    SALE(5),
+    ENDED(6);
 
     public final int value;
 

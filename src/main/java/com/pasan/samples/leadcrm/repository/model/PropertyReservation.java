@@ -28,4 +28,14 @@ public class PropertyReservation {
     private BigDecimal reservationFee;
 
     private Date expectedClosingDate;
+
+    private Boolean financialStatus;
+
+    private BigDecimal loanAmount;
+
+    private String paymentPlan;
+
+    private Boolean contractSigned;
+
+    private String legalNotes;
 }
