@@ -220,16 +220,13 @@ ALTER TABLE `property`
 -- Indexes for table `property_reservation`
 --
 ALTER TABLE `property_reservation`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UKovulm29fk44gvjro8nin1vfy1` (`lead_id`),
-  ADD UNIQUE KEY `UK6m4n2114vmtm6j0f92yxkejar` (`property_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sale`
 --
 ALTER TABLE `sale`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UKina9pbyl33s7ssvu5l5lhxlga` (`property_id`),
   ADD KEY `FKgvah8hs1frx0s0wxqjr2vw74u` (`agent_id`),
   ADD KEY `FK14hoeonm4nkkdblg49r52wi2n` (`lead_id`);
 
