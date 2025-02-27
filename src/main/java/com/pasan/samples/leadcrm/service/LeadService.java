@@ -39,7 +39,7 @@ public class LeadService {
         lead.setContact(request.contact());
         lead.setSource(request.source());
         lead.setInquiryDate(request.inquiryDate());
-        lead.setStatus(LeadStatus.UNASIGNED);
+        lead.setStatus(LeadStatus.UNASSIGNED);
         lead = leadRepository.save(lead);
 
         return CommonResponse.createdResponse(lead.getId());
@@ -58,7 +58,7 @@ public class LeadService {
 
         Lead lead = optLead.get();
 
-        if (LeadStatus.UNASIGNED != lead.getStatus()) {
+        if (LeadStatus.UNASSIGNED != lead.getStatus()) {
             throw new LogicViolationException(ErrorCode.INELIGIBLE_LEAD_STATUS);
         }
 

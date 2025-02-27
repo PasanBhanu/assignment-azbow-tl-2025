@@ -1,7 +1,7 @@
 package com.pasan.samples.leadcrm.util;
 
 public enum LeadStatus {
-    UNASIGNED(0),
+    UNASSIGNED(0),
     ASSIGNED(1),
     RESERVATION(2),
     FINANCIAL_APPROVED(3),

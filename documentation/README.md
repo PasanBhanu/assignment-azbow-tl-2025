@@ -1,6 +1,28 @@
-# System Design
+# System Design Decisions
 
+The system was designed with the necessary apis to handle the state transition of lead entity. 
 
+There are 2 roles in the system which created to address role-based access functional requirement. APIs are restricted for a specific role or public. For authentication, Basic Authentication is used instead of JWT. 
+
+Role based restrictions are forced through api filtering. Method security is not used considering the simplicity of the task.
+
+# State Diagram
+
+Below diagram shows how the lead status is transitionaing between status based on the actions.
+
+```mermaid
+stateDiagram-v2
+    [*] --> UNASSIGNED
+    UNASSIGNED --> ASSIGNED
+    ASSIGNED --> RESERVATION
+    RESERVATION --> ASSIGNED : cancel
+    RESERVATION --> FINANCIAL_APPROVED : financial approved
+    RESERVATION --> [*] : financial rejected
+    FINANCIAL_APPROVED --> LEGAL_FINALIZED : contract singed
+    FINANCIAL_APPROVED --> [*] : contract rejected 
+    LEGAL_FINALIZED --> SALE
+    SALE --> [*]
+```
 
 # ER Diagram
 
@@ -62,5 +84,4 @@ erDiagram
     SALE ||--o| PROPERTY : has
     SALE ||--|| LEAD : pay
     SALE ||--|{ AGENT : do
-
 ```
