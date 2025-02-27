@@ -1,0 +1,827 @@
+{
+	"info": {
+		"_postman_id": "a2af2e82-2f3c-431f-bd66-cb02b768d8d3",
+		"name": "AZBOW Lead CRM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25464284"
+	},
+	"item": [
+		{
+			"name": "Get Leads",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/lead",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lead"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"contact\": \"<string>\",\n  \"name\": \"<string>\",\n  \"source\": \"<string>\",\n  \"inquiryDate\": \"<dateTime>\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lead/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lead",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": \"<string>\",\n  \"statusDescription\": \"<string>\",\n  \"data\": \"<object>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Lead",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/lead/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lead",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"contact\": \"<string>\",\n  \"name\": \"<string>\",\n  \"source\": \"<string>\",\n  \"inquiryDate\": \"<dateTime>\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lead/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lead",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": \"<string>\",\n  \"statusDescription\": \"<string>\",\n  \"data\": \"<object>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "1. Create Lead",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"contact\": \"0715454904\",\n  \"name\": \"Pasan Guruge\",\n  \"source\": \"Call\",\n  \"inquiryDate\": \"2025-02-27\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lead",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lead"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"contact\": \"<string>\",\n  \"name\": \"<string>\",\n  \"source\": \"<string>\",\n  \"inquiryDate\": \"<dateTime>\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lead/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lead",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": \"<string>\",\n  \"statusDescription\": \"<string>\",\n  \"data\": \"<object>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "2. Assign Lead To Agent",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"agentId\": \"1\",\n  \"followUpStatus\": \"NA\",\n  \"preferredPropertyType\": \"Bare Land\",\n  \"budget\": 100000,\n  \"note\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lead/:id/assign",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lead",
+						":id",
+						"assign"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"agentId\": \"<integer>\",\n  \"followUpStatus\": \"<string>\",\n  \"preferredPropertyType\": \"<string>\",\n  \"budget\": \"<number>\",\n  \"note\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lead/:id/assign",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lead",
+								":id",
+								"assign"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": \"<string>\",\n  \"statusDescription\": \"<string>\",\n  \"data\": \"<object>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "3. Reserve Property",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"propertyId\": 1,\n  \"reservationDate\": \"2025-02-27\",\n  \"reservationFee\": 10,\n  \"expectedClosingDate\": \"2025-03-27\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lead/:id/reserve",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lead",
+						":id",
+						"reserve"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"propertyId\": \"<integer>\",\n  \"reservationDate\": \"<dateTime>\",\n  \"reservationFee\": \"<number>\",\n  \"expectedClosingDate\": \"<dateTime>\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lead/:id/reserve",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lead",
+								":id",
+								"reserve"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": \"<string>\",\n  \"statusDescription\": \"<string>\",\n  \"data\": \"<object>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "4. Financial Approval For Reservation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"reservationId\": 1,\n  \"financialStatus\": true,\n  \"loanAmount\": 1765444,\n  \"paymentPlan\": \"Monthly\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lead/:id/approve-finance",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lead",
+						":id",
+						"approve-finance"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"reservationId\": \"<integer>\",\n  \"financialStatus\": \"<boolean>\",\n  \"loanAmount\": \"<number>\",\n  \"paymentPlan\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lead/:id/approve-finance",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lead",
+								":id",
+								"approve-finance"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": \"<string>\",\n  \"statusDescription\": \"<string>\",\n  \"data\": \"<object>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "5. Legal Approval For Reservation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"reservationId\": 1,\n  \"contractSinged\": true,\n  \"legalNotes\": \"asdfasdf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lead/:id/approve-legal",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lead",
+						":id",
+						"approve-legal"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"reservationId\": \"<integer>\",\n  \"contractSinged\": \"<boolean>\",\n  \"legalNotes\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lead/:id/approve-legal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lead",
+								":id",
+								"approve-legal"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": \"<string>\",\n  \"statusDescription\": \"<string>\",\n  \"data\": \"<object>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "6. Sale Reservation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"reservationId\": 1,\n  \"saleDate\": \"2025-02-27\",\n  \"finalSalePrice\": \"5563345\",\n  \"commissionDetails\": \"NA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lead/:id/sale",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lead",
+						":id",
+						"sale"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"reservationId\": \"<integer>\",\n  \"saleDate\": \"<dateTime>\",\n  \"finalSalePrice\": \"<number>\",\n  \"commissionDetails\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lead/:id/sale",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lead",
+								":id",
+								"sale"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": \"<string>\",\n  \"statusDescription\": \"<string>\",\n  \"data\": \"<object>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Cancel Reservation",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"reservationId\": \"<integer>\",\n  \"notes\": \"<string>\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/lead/:id/cancel-reservation",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"lead",
+						":id",
+						"cancel-reservation"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "<integer>",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"reservationId\": \"<integer>\",\n  \"notes\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lead/:id/cancel-reservation",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lead",
+								":id",
+								"cancel-reservation"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": \"<string>\",\n  \"statusDescription\": \"<string>\",\n  \"data\": \"<object>\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
