@@ -12,7 +12,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LeadService {
@@ -33,7 +34,12 @@ public class LeadService {
         this.saleRepository = saleRepository;
     }
 
-    public ResponseEntity<CommonResponse<LeadsResponse>> getLeads(Date startDate, Date endDate, Integer status, Integer agent) {
+    /**
+     * Get list of leads
+     *
+     * @return Leads list
+     */
+    public ResponseEntity<CommonResponse<LeadsResponse>> getLeads() {
         List<Lead> leads = leadRepository.findAll();
 
         LeadsResponse response = new LeadsResponse(leads.stream().map(this::convertToLeadResponse).toList());
@@ -41,6 +47,12 @@ public class LeadService {
         return CommonResponse.successResponse(response);
     }
 
+    /**
+     * Get a lead by id
+     *
+     * @param id Lead id
+     * @return Lead
+     */
     public ResponseEntity<CommonResponse<LeadResponse>> getLead(Integer id) {
         Optional<Lead> optLead = leadRepository.findById(id);
         if (optLead.isEmpty()) {
@@ -50,6 +62,12 @@ public class LeadService {
         return CommonResponse.successResponse(this.convertToLeadResponse(optLead.get()));
     }
 
+    /**
+     * Create new lead
+     *
+     * @param request Lead request
+     * @return Lead id
+     */
     public ResponseEntity<CommonResponse> createLead(CreateLeadRequest request) {
         Lead lead = new Lead();
         lead.setName(request.name());
@@ -62,6 +80,13 @@ public class LeadService {
         return CommonResponse.createdResponse(lead.getId());
     }
 
+    /**
+     * Assign agent to lead
+     *
+     * @param id      Lead id
+     * @param request Update request
+     * @return Common response
+     */
     public ResponseEntity<CommonResponse> assignLeadToAgent(Integer id, CreateAgentAssignmentRequest request) {
         Optional<Lead> optLead = leadRepository.findById(id);
         if (optLead.isEmpty()) {
@@ -90,6 +115,13 @@ public class LeadService {
         return CommonResponse.successResponse();
     }
 
+    /**
+     * Reserve property
+     *
+     * @param id      Lead id
+     * @param request Update request
+     * @return Common response
+     */
     @Transactional
     public ResponseEntity<CommonResponse> reserveProperty(Integer id, @Valid CreateReservationRequest request) {
         Optional<Lead> optLead = leadRepository.findById(id);
@@ -109,7 +141,6 @@ public class LeadService {
         }
 
 
-
         lead.setStatus(LeadStatus.RESERVATION);
         leadRepository.save(lead);
 
@@ -124,6 +155,13 @@ public class LeadService {
         return CommonResponse.createdResponse(propertyReservation.getId());
     }
 
+    /**
+     * Cancel reservation
+     *
+     * @param id      Lead id
+     * @param request Reservation information
+     * @return Common response
+     */
     @Transactional
     public ResponseEntity<CommonResponse> cancelReservation(Integer id, @Valid ReservationCancelRequest request) {
         Optional<Lead> optLead = leadRepository.findById(id);
@@ -152,6 +190,14 @@ public class LeadService {
         return CommonResponse.successResponse();
     }
 
+    /**
+     * Enable financial approval
+     *
+     * @param id      Lead id
+     * @param request Financial request
+     * @return Common response
+     */
+    @Transactional
     public ResponseEntity<CommonResponse> financialApprovalForReservation(Integer id, @Valid CreateReservationFinancialApprovalRequest request) {
         Optional<Lead> optLead = leadRepository.findById(id);
         if (optLead.isEmpty()) {
@@ -185,6 +231,14 @@ public class LeadService {
         return CommonResponse.successResponse();
     }
 
+    /**
+     * Add legal approval
+     *
+     * @param id      Lead id
+     * @param request Approval request
+     * @return Common response
+     */
+    @Transactional
     public ResponseEntity<CommonResponse> legalApprovalForReservation(Integer id, @Valid CreateReservationLegalRequest request) {
         Optional<Lead> optLead = leadRepository.findById(id);
         if (optLead.isEmpty()) {
@@ -217,6 +271,13 @@ public class LeadService {
         return CommonResponse.successResponse();
     }
 
+    /**
+     * Add sale
+     *
+     * @param id      Lead id
+     * @param request Sale request
+     * @return Common response
+     */
     public ResponseEntity<CommonResponse> saleReservation(Integer id, @Valid CreateSaleRequest request) {
         Optional<Lead> optLead = leadRepository.findById(id);
         if (optLead.isEmpty()) {
@@ -248,6 +309,12 @@ public class LeadService {
         return CommonResponse.successResponse();
     }
 
+    /**
+     * Convert lead entity to lead response
+     *
+     * @param lead Lead entity
+     * @return Lead response
+     */
     private LeadResponse convertToLeadResponse(Lead lead) {
         // Get Agent
         AgentResponse agent = null;
